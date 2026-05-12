@@ -11,8 +11,8 @@ FROM nginx:alpine
 
 COPY --from=build /app/build/web /usr/share/nginx/html
 
-# Railway provides PORT dynamically; configure Nginx to use it
-RUN echo 'server { listen ${PORT}; location / { root /usr/share/nginx/html; try_files $uri $uri/ /index.html; } }' > /etc/nginx/templates/default.conf.template
+# Write an nginx config template with PORT placeholder
+RUN echo 'server { listen __PORT__; location / { root /usr/share/nginx/html; try_files $uri $uri/ /index.html; } }' > /etc/nginx/conf.d/default.conf.template
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# At runtime, substitute PORT and start nginx
+CMD ["/bin/sh", "-c", "sed s/__PORT__/$PORT/g /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
