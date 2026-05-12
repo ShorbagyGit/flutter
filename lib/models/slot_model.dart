@@ -4,7 +4,7 @@ class SlotModel {
   final String startTime;
   final String endTime;
   final String status;
-  final double price;
+  final String horseId;
   final String stableId;
 
   SlotModel({
@@ -13,23 +13,27 @@ class SlotModel {
     required this.startTime,
     required this.endTime,
     required this.status,
-    required this.price,
+    required this.horseId,
     required this.stableId,
   });
 
   factory SlotModel.fromJson(Map<String, dynamic> json) {
+
+    String readNestedId(dynamic value) {
+      if (value is Map<String, dynamic>) {
+        return (value['id'] ?? value['horseId'] ?? value['stableId'] ?? '').toString();
+      }
+      return value?.toString() ?? '';
+    }
+
     return SlotModel(
       id: json['id']?.toString() ?? '',
       date: json['date']?.toString().trim() ?? '',
       startTime: json['startTime']?.toString().trim() ?? '',
       endTime: json['endTime']?.toString().trim() ?? '',
       status: json['status']?.toString().trim() ?? '',
-      price: (json['price'] is int)
-          ? (json['price'] as int).toDouble()
-          : (json['price'] is String)
-              ? double.tryParse(json['price']) ?? 0.0
-              : (json['price'] as double?) ?? 0.0,
-      stableId: json['stable']?['id']?.toString() ?? '',
+      horseId: readNestedId(json['horse'] ?? json['horseId'] ?? json['horse_id']),
+      stableId: readNestedId(json['stable'] ?? json['stableId'] ?? json['stable_id']),
     );
   }
 
@@ -40,7 +44,7 @@ class SlotModel {
       'startTime': startTime,
       'endTime': endTime,
       'status': status,
-      'price': price,
+      'horse': {'id': horseId},
       'stable': {'id': stableId},
     };
   }

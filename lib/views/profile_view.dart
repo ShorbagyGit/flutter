@@ -158,6 +158,17 @@ class ProfileView extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
+                  const SizedBox(height: 6),
+                  Text(
+                    (user?.phone.isNotEmpty ?? false) ? user!.phone : 'No phone number saved',
+                    style: TextStyle(
+                      color: Colors.grey.shade600,
+                      fontSize: 14,
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   const SizedBox(height: 20),
                   // Stats Row with Enhanced Cards
                   Row(
@@ -573,9 +584,7 @@ class _UserProductsPageState extends State<UserProductsPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() {
-      context.read<MarketplaceViewModel>().loadUserProducts(widget.userId);
-    });
+    context.read<MarketplaceViewModel>().loadUserProducts(widget.userId);
   }
 
   @override
@@ -745,7 +754,7 @@ class _UserProductsPageState extends State<UserProductsPage> {
                                 Image.network(
                                   product.imageUrl,
                                   fit: BoxFit.cover,
-                                  errorBuilder: (_, __, ___) =>
+                                  errorBuilder: (_, _, _) =>
                                       const Icon(Icons.image_not_supported,
                                           size: 48, color: Colors.grey),
                                 )
@@ -920,15 +929,11 @@ class _UserProductsPageState extends State<UserProductsPage> {
                                                   onPressed: () async {
                                                     Navigator.pop(
                                                         dialogContext);
-                                                    final success = await context
-                                                        .read<
-                                                            MarketplaceViewModel>()
-                                                        .deleteUserProduct(
-                                                            product.id);
+                                                    final marketplaceViewModel = context.read<MarketplaceViewModel>();
+                                                    final messenger = ScaffoldMessenger.of(context);
+                                                    final success = await marketplaceViewModel.deleteUserProduct(product.id);
                                                     if (success) {
-                                                      ScaffoldMessenger.of(
-                                                              context)
-                                                          .showSnackBar(
+                                                      messenger.showSnackBar(
                                                         const SnackBar(
                                                           content: Text(
                                                             'Product deleted successfully',
@@ -939,13 +944,8 @@ class _UserProductsPageState extends State<UserProductsPage> {
                                                         ),
                                                       );
                                                     } else {
-                                                      final errorMsg = context
-                                                        .read<
-                                                          MarketplaceViewModel>()
-                                                        .error;
-                                                      ScaffoldMessenger.of(
-                                                              context)
-                                                          .showSnackBar(
+                                                      final errorMsg = marketplaceViewModel.error;
+                                                      messenger.showSnackBar(
                                                         SnackBar(
                                                           content: Text(
                                                             errorMsg ??

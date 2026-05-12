@@ -19,6 +19,20 @@ class _LoginViewState extends State<LoginView> {
   bool _obscurePassword = true;
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (!mounted) return;
+      final authViewModel = context.read<AuthViewModel>();
+      final hasSession = await authViewModel.restoreSession();
+      if (!mounted) return;
+      if (hasSession) {
+        Navigator.pushReplacementNamed(context, Routes.mainShell);
+      }
+    });
+  }
+
+  @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
@@ -26,7 +40,12 @@ class _LoginViewState extends State<LoginView> {
   }
 
   Future<void> _submit(AuthViewModel authViewModel) async {
-    if (!_formKey.currentState!.validate()) return;
+    if (!_formKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter valid login details.')),
+      );
+      return;
+    }
 
     final success = await authViewModel.login(
       email: _emailController.text.trim(),
@@ -41,6 +60,22 @@ class _LoginViewState extends State<LoginView> {
     }
 
     final message = authViewModel.error ?? 'Login failed';
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
+
+  Future<void> _submitGoogle(AuthViewModel authViewModel) async {
+    final success = await authViewModel.loginWithGoogleNative();
+
+    if (!mounted) return;
+
+    if (success) {
+      Navigator.pushReplacementNamed(context, Routes.mainShell);
+      return;
+    }
+
+    final message = authViewModel.error ?? 'Google sign-in failed';
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(message)),
     );
@@ -181,6 +216,7 @@ class _LoginViewState extends State<LoginView> {
                               controller: _passwordController,
                               obscureText: _obscurePassword,
                               textInputAction: TextInputAction.done,
+                              onFieldSubmitted: (_) => _submit(authViewModel),
                               decoration: InputDecoration(
                                 labelText: 'Password',
                                 hintText: 'Enter your password',
@@ -265,14 +301,33 @@ class _LoginViewState extends State<LoginView> {
                               width: double.infinity,
                               height: 52,
                               child: OutlinedButton.icon(
-                                onPressed: authViewModel.isLoading ? null : () {},
+                                onPressed: authViewModel.isLoading
+                                    ? null
+                                    : () => _submitGoogle(authViewModel),
                                 style: OutlinedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                   side: BorderSide(color: Colors.grey.shade300, width: 1),
                                 ),
-                                icon: const Icon(Icons.apps),
+                                icon: Container(
+                                  width: 22,
+                                  height: 22,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(11),
+                                    border: Border.all(color: Colors.grey.shade300, width: 1),
+                                  ),
+                                  child: const Text(
+                                    'G',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w800,
+                                      color: Color(0xFF4285F4),
+                                    ),
+                                  ),
+                                ),
                                 label: const Text(
                                   'Continue with Google',
                                   style: TextStyle(

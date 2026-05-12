@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 import '../models/booking_model.dart';
 import '../services/api_service.dart';
@@ -33,13 +33,13 @@ class BookingViewModel extends ChangeNotifier {
 
     try {
       final response = await ApiService.getBookingsByUser(userId);
-      debugPrint('Bookings response type: ${response.data.runtimeType}');
+      _log('Bookings response type: ${response.data.runtimeType}');
       bookings = _parseBookingsPayload(response.data);
       if (!showLoading) {
         error = null;
       }
     } on DioException catch (exception) {
-      debugPrint('Bookings request failed: ${exception.message}');
+      _log('Bookings request failed: ${exception.message}');
       final statusCode = exception.response?.statusCode;
       final responseText = exception.response?.data?.toString().toLowerCase() ?? '';
 
@@ -51,7 +51,7 @@ class BookingViewModel extends ChangeNotifier {
         bookings = [];
       }
     } catch (exception) {
-      debugPrint('Bookings request failed: $exception');
+      _log('Bookings request failed: $exception');
       error = 'Unable to load bookings right now. Please try again.';
       bookings = [];
     } finally {
@@ -71,17 +71,17 @@ class BookingViewModel extends ChangeNotifier {
 
     try {
       final response = await ApiService.getAllBookings();
-      debugPrint('All bookings response type: ${response.data.runtimeType}');
+      _log('All bookings response type: ${response.data.runtimeType}');
       bookings = _parseBookingsPayload(response.data);
       if (!showLoading) {
         error = null;
       }
     } on DioException catch (exception) {
-      debugPrint('All bookings request failed: ${exception.message}');
+      _log('All bookings request failed: ${exception.message}');
       error = 'Unable to load bookings right now. Please try again.';
       bookings = [];
     } catch (exception) {
-      debugPrint('All bookings request failed: $exception');
+      _log('All bookings request failed: $exception');
       error = 'Unable to load bookings right now. Please try again.';
       bookings = [];
     } finally {
@@ -92,10 +92,10 @@ class BookingViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> bookSlot({
+  Future<BookingModel?> bookSlot({
     required String slotId,
     required String userId,
-    required String date,
+    String? date,
   }) async {
     isLoading = true;
     error = null;
@@ -105,9 +105,11 @@ class BookingViewModel extends ChangeNotifier {
       final response = await ApiService.bookSlot(slotId: slotId, userId: userId, date: date);
       final parsed = _decodeSingleBooking(response.data);
       currentBooking = parsed;
+      return parsed;
     } catch (exception) {
       error = exception.toString();
       currentBooking = null;
+      return null;
     } finally {
       isLoading = false;
       notifyListeners();
@@ -134,6 +136,9 @@ class BookingViewModel extends ChangeNotifier {
             paymobOrderId: booking.paymobOrderId,
             userId: booking.userId,
             stableId: booking.stableId,
+            stableName: booking.stableName,
+            horseId: booking.horseId,
+            horseName: booking.horseName,
             slotId: booking.slotId,
           );
         }
@@ -183,6 +188,12 @@ class BookingViewModel extends ChangeNotifier {
 
   int get hoursBooked => bookings.length * 2;
 
+  void _log(String message) {
+    if (kDebugMode) {
+      debugPrint(message);
+    }
+  }
+
   List<BookingModel> _parseBookingsPayload(dynamic payload) {
     if (payload is List) {
       return _mapBookingList(payload);
@@ -202,7 +213,7 @@ class BookingViewModel extends ChangeNotifier {
 
     if (payload is String) {
       final raw = payload.trim();
-      debugPrint('Bookings raw response: ${raw.length > 1000 ? '${raw.substring(0, 1000)}...' : raw}');
+      _log('Bookings raw response: ${raw.length > 1000 ? '${raw.substring(0, 1000)}...' : raw}');
 
       if (raw.isEmpty || raw == '[]' || raw.toLowerCase().contains('no booking')) {
         return [];

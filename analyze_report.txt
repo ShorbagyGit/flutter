@@ -1,0 +1,116 @@
+Analyzing khayal_mobile...                                      
+
+  error - The name 'HorseSlotsArguments' isn't a type, so it can't be used in an 'as' expression - lib\main.dart:90:50 - cast_to_non_type
+  error - The method '_RoundIconButton' isn't defined for the type 'HorseDetailsView' - lib\views\horse_details_view.dart:70:31 - undefined_method
+  error - The method 'circular' isn't defined for the type 'Function' - lib\views\horse_details_view.dart:85:58 - undefined_method
+  error - The method 'HorseSlotsArguments' isn't defined for the type 'HorseDetailsView' - lib\views\horse_details_view.dart:244:26 - undefined_method
+  error - The named parameter 'width' isn't defined - lib\views\horse_details_view.dart:266:9 - undefined_named_parameter
+  error - The method 'circular' isn't defined for the type 'Function' - lib\views\horse_details_view.dart:269:38 - undefined_method
+  error - The named parameter 'clipBehavior' isn't defined - lib\views\horse_details_view.dart:274:9 - undefined_named_parameter
+  error - Invalid constant value - lib\views\horse_details_view.dart:283:29 - invalid_constant
+  error - The named parameter 'colors' is required, but there's no corresponding argument - lib\views\horse_details_view.dart:283:29 - missing_required_argument
+  error - The named parameter 'borderRadius' isn't defined - lib\views\horse_details_view.dart:289:23 - undefined_named_parameter
+  error - The method 'circular' isn't defined for the type 'Function' - lib\views\horse_details_view.dart:289:50 - undefined_method
+  error - The named parameter 'border' isn't defined - lib\views\horse_details_view.dart:290:23 - undefined_named_parameter
+  error - Too many positional arguments: 1 expected, but 2 found - lib\views\horse_details_view.dart:291:13 - extra_positional_arguments_could_be_named
+  error - Too many positional arguments: 0 expected, but 1 found - lib\views\horse_details_view.dart:292:25 - extra_positional_arguments_could_be_named
+  error - The named parameter 'gradient' isn't defined - lib\views\horse_details_view.dart:293:17 - undefined_named_parameter
+  error - Undefined name 'clipBehavior' - lib\views\horse_details_view.dart:295:21 - undefined_identifier
+  error - Expected to find ']' - lib\views\horse_details_view.dart:295:33 - expected_token
+  error - Expected to find ')' - lib\views\horse_details_view.dart:436:23 - expected_token
+  error - Expected to find ')' - lib\views\horse_details_view.dart:439:18 - expected_token
+  error - Expected to find ']' - lib\views\horse_details_view.dart:439:18 - expected_token
+  error - The named parameter 'width' isn't defined - lib\views\horse_details_view.dart:451:19 - undefined_named_parameter
+  error - The method 'circular' isn't defined for the type 'Function' - lib\views\horse_details_view.dart:455:48 - undefined_method
+  error - The named parameter 'width' isn't defined - lib\views\horse_details_view.dart:460:25 - undefined_named_parameter
+  error - The named parameter 'height' isn't defined - lib\views\horse_details_view.dart:461:25 - undefined_named_parameter
+  error - The method 'circular' isn't defined for the type 'Function' - lib\views\horse_details_view.dart:464:54 - undefined_method
+  error - The named parameter 'width' isn't defined - lib\views\horse_details_view.dart:497:23 - undefined_named_parameter
+  error - The named parameter 'height' isn't defined - lib\views\horse_details_view.dart:498:23 - undefined_named_parameter
+  error - The named parameter 'margin' isn't defined - lib\views\horse_details_view.dart:499:23 - undefined_named_parameter
+  error - The method 'circular' isn't defined for the type 'Function' - lib\views\horse_details_view.dart:502:52 - undefined_method
+   info - An uninitialized variable should have an explicit type annotation - lib\views\horse_details_view.dart:522:7 - prefer_typing_uninitialized_variables
+   info - Missing type annotation - lib\views\horse_details_view.dart:522:7 - strict_top_level_inference
+  error - Expected to find ';' - lib\views\horse_details_view.dart:522:7 - expected_token
+  error - Variables must be declared using the keywords 'const', 'final', 'var' or a type name - lib\views\horse_details_view.dart:522:7 - missing_const_final_var_or_type
+  error - Expected a method, getter, setter or operator declaration - lib\views\horse_details_view.dart:522:19 - expected_executable
+   info - Missing type annotation - lib\views\horse_details_view.dart:522:21 - strict_top_level_inference
+   info - The variable name 'BorderRadius' isn't a lowerCamelCase identifier - lib\views\horse_details_view.dart:522:21 - non_constant_identifier_names
+  error - Functions must have an explicit list of parameters - lib\views\horse_details_view.dart:522:21 - missing_function_parameters
+  error - A function body must be provided - lib\views\horse_details_view.dart:522:33 - missing_function_body
+  error - Expected a method, getter, setter or operator declaration - lib\views\horse_details_view.dart:522:33 - expected_executable
+   info - Missing type annotation - lib\views\horse_details_view.dart:522:34 - strict_top_level_inference
+  error - Expected an identifier - lib\views\horse_details_view.dart:522:43 - missing_identifier
+  error - A function body must be provided - lib\views\horse_details_view.dart:522:46 - missing_function_body
+  error - Expected a method, getter, setter or operator declaration - lib\views\horse_details_view.dart:522:46 - expected_executable
+   info - An uninitialized variable should have an explicit type annotation - lib\views\horse_details_view.dart:523:7 - prefer_typing_uninitialized_variables
+   info - Missing type annotation - lib\views\horse_details_view.dart:523:7 - strict_top_level_inference
+  error - Expected to find ';' - lib\views\horse_details_view.dart:523:7 - expected_token
+  error - Variables must be declared using the keywords 'const', 'final', 'var' or a type name - lib\views\horse_details_view.dart:523:7 - missing_const_final_var_or_type
+  error - Expected a method, getter, setter or operator declaration - lib\views\horse_details_view.dart:523:12 - expected_executable
+   info - An uninitialized variable should have an explicit type annotation - lib\views\horse_details_view.dart:523:14 - prefer_typing_uninitialized_variables
+   info - Missing type annotation - lib\views\horse_details_view.dart:523:14 - strict_top_level_inference
+  error - The name 'onTap' is already defined - lib\views\horse_details_view.dart:523:14 - duplicate_definition
+  error - Variables must be declared using the keywords 'const', 'final', 'var' or a type name - lib\views\horse_details_view.dart:523:14 - missing_const_final_var_or_type
+   info - An uninitialized variable should have an explicit type annotation - lib\views\horse_details_view.dart:524:7 - prefer_typing_uninitialized_variables
+   info - Missing type annotation - lib\views\horse_details_view.dart:524:7 - strict_top_level_inference
+  error - Expected to find ';' - lib\views\horse_details_view.dart:524:7 - expected_token
+  error - Expected a method, getter, setter or operator declaration - lib\views\horse_details_view.dart:524:12 - expected_executable
+   info - Missing type annotation - lib\views\horse_details_view.dart:524:14 - strict_top_level_inference
+   info - The variable name 'Container' isn't a lowerCamelCase identifier - lib\views\horse_details_view.dart:524:14 - non_constant_identifier_names
+   info - Missing type annotation - lib\views\horse_details_view.dart:525:9 - strict_top_level_inference
+  error - Named parameters must be enclosed in curly braces ('{' and '}') - lib\views\horse_details_view.dart:525:16 - named_parameter_outside_group
+  error - Using a colon as the separator before a default value is no longer supported - lib\views\horse_details_view.dart:525:16 - obsolete_colon_for_default_value
+   info - Missing type annotation - lib\views\horse_details_view.dart:526:9 - strict_top_level_inference
+  error - Named parameters must be enclosed in curly braces ('{' and '}') - lib\views\horse_details_view.dart:526:19 - named_parameter_outside_group
+  error - Using a colon as the separator before a default value is no longer supported - lib\views\horse_details_view.dart:526:19 - obsolete_colon_for_default_value
+  error - The default value of an optional parameter must be constant - lib\views\horse_details_view.dart:526:21 - non_constant_default_value
+  error - The method 'circular' isn't defined for the type 'Function' - lib\views\horse_details_view.dart:528:38 - undefined_method
+   info - Missing type annotation - lib\views\horse_details_view.dart:530:9 - strict_top_level_inference
+  error - Named parameters must be enclosed in curly braces ('{' and '}') - lib\views\horse_details_view.dart:530:14 - named_parameter_outside_group
+  error - Using a colon as the separator before a default value is no longer supported - lib\views\horse_details_view.dart:530:14 - obsolete_colon_for_default_value
+  error - The default value of an optional parameter must be constant - lib\views\horse_details_view.dart:530:16 - non_constant_default_value
+  error - Undefined name 'icon' - lib\views\horse_details_view.dart:530:21 - undefined_identifier
+  error - A function body must be provided - lib\views\horse_details_view.dart:531:8 - missing_function_body
+  error - Expected a method, getter, setter or operator declaration - lib\views\horse_details_view.dart:531:8 - expected_executable
+  error - Expected a method, getter, setter or operator declaration - lib\views\horse_details_view.dart:532:5 - expected_executable
+  error - Unexpected text ';' - lib\views\horse_details_view.dart:532:6 - unexpected_token
+  error - Expected a method, getter, setter or operator declaration - lib\views\horse_details_view.dart:533:3 - expected_executable
+  error - Expected a method, getter, setter or operator declaration - lib\views\horse_details_view.dart:534:1 - expected_executable
+  error - The named parameter 'width' isn't defined - lib\views\horse_details_view.dart:545:7 - undefined_named_parameter
+  error - The method 'circular' isn't defined for the type 'Function' - lib\views\horse_details_view.dart:549:36 - undefined_method
+  error - The method 'circular' isn't defined for the type 'Function' - lib\views\horse_details_view.dart:588:36 - undefined_method
+  error - Undefined class 'HorseSlotsArguments' - lib\views\horse_slots_view.dart:15:9 - undefined_class
+  error - 'Container' isn't a function - lib\views\horse_slots_view.dart:66:22 - invocation_of_non_function
+  error - The name 'Container' is defined in the libraries 'package:flutter/src/widgets/container.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:66:22 - ambiguous_import
+  error - 'Container' isn't a function - lib\views\horse_slots_view.dart:85:25 - invocation_of_non_function
+  error - The name 'Container' is defined in the libraries 'package:flutter/src/widgets/container.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:85:25 - ambiguous_import
+  error - The name 'BorderRadius' is defined in the libraries 'package:flutter/src/painting/border_radius.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:90:43 - ambiguous_import
+  error - 'Container' isn't a function - lib\views\horse_slots_view.dart:143:73 - invocation_of_non_function
+  error - The name 'Container' is defined in the libraries 'package:flutter/src/widgets/container.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:143:73 - ambiguous_import
+  error - 'Container' isn't a function - lib\views\horse_slots_view.dart:147:25 - invocation_of_non_function
+  error - The name 'Container' is defined in the libraries 'package:flutter/src/widgets/container.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:147:25 - ambiguous_import
+  error - 'Container' isn't a function - lib\views\horse_slots_view.dart:177:34 - invocation_of_non_function
+  error - The name 'Container' is defined in the libraries 'package:flutter/src/widgets/container.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:177:34 - ambiguous_import
+  error - The name 'BorderRadius' is defined in the libraries 'package:flutter/src/painting/border_radius.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:181:45 - ambiguous_import
+  error - 'Container' isn't a function - lib\views\horse_slots_view.dart:194:33 - invocation_of_non_function
+  error - The name 'Container' is defined in the libraries 'package:flutter/src/widgets/container.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:194:33 - ambiguous_import
+  error - The name 'BorderRadius' is defined in the libraries 'package:flutter/src/painting/border_radius.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:199:51 - ambiguous_import
+  error - 'Container' isn't a function - lib\views\horse_slots_view.dart:320:14 - invocation_of_non_function
+  error - The name 'Container' is defined in the libraries 'package:flutter/src/widgets/container.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:320:14 - ambiguous_import
+  error - The name 'BorderRadius' is defined in the libraries 'package:flutter/src/painting/border_radius.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:325:25 - ambiguous_import
+  error - 'Container' isn't a function - lib\views\horse_slots_view.dart:363:12 - invocation_of_non_function
+  error - The name 'Container' is defined in the libraries 'package:flutter/src/widgets/container.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:363:12 - ambiguous_import
+  error - The name 'BorderRadius' is defined in the libraries 'package:flutter/src/painting/border_radius.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:367:23 - ambiguous_import
+  error - The name 'BorderRadius' is defined in the libraries 'package:flutter/src/painting/border_radius.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:397:21 - ambiguous_import
+  error - 'Container' isn't a function - lib\views\horse_slots_view.dart:399:14 - invocation_of_non_function
+  error - The name 'Container' is defined in the libraries 'package:flutter/src/widgets/container.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:399:14 - ambiguous_import
+  error - The name 'BorderRadius' is defined in the libraries 'package:flutter/src/painting/border_radius.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:403:25 - ambiguous_import
+  error - 'Container' isn't a function - lib\views\horse_slots_view.dart:419:12 - invocation_of_non_function
+  error - The name 'Container' is defined in the libraries 'package:flutter/src/widgets/container.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:419:12 - ambiguous_import
+  error - The name 'BorderRadius' is defined in the libraries 'package:flutter/src/painting/border_radius.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:424:23 - ambiguous_import
+  error - 'Container' isn't a function - lib\views\horse_slots_view.dart:459:14 - invocation_of_non_function
+  error - The name 'Container' is defined in the libraries 'package:flutter/src/widgets/container.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:459:14 - ambiguous_import
+  error - The name 'BorderRadius' is defined in the libraries 'package:flutter/src/painting/border_radius.dart (via package:flutter/material.dart)' and 'package:khayal_mobile/views/horse_details_view.dart' - lib\views\horse_slots_view.dart:463:25 - ambiguous_import
+
+112 issues found. (ran in 10.3s)

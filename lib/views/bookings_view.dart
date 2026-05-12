@@ -258,11 +258,13 @@ class _BookingsViewState extends State<BookingsView> {
               ),
               child: Column(
                 children: [
+                  _InfoRow(label: 'Horse', value: booking.horseName.isNotEmpty ? booking.horseName : 'Unknown'),
+                  const SizedBox(height: 8),
+                  _InfoRow(label: 'Stable', value: booking.stableName.isNotEmpty ? booking.stableName : 'Unknown'),
+                  const SizedBox(height: 8),
                   _InfoRow(label: 'Date', value: booking.date),
                   const SizedBox(height: 8),
-                  _InfoRow(label: 'Start Time', value: booking.startTime),
-                  const SizedBox(height: 8),
-                  _InfoRow(label: 'End Time', value: booking.endTime),
+                  _InfoRow(label: 'Time', value: '${booking.startTime} - ${booking.endTime}'),
                 ],
               ),
             ),

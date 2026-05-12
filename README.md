@@ -1,21 +1,17 @@
-# Khayal Mobile
+# khayal_mobile
 
-Khayal Mobile is a Flutter app for stable booking, marketplace browsing, payments, and support flows.
-
-## Features
-
-- Authentication screens for login and registration
-- Stable browsing and booking flow
-- Booking confirmation and payment screens
-- Marketplace product details with phone call actions
-- Support/contact screen
+A new Flutter project.
 
 ## Getting Started
 
-1. Install Flutter and verify your setup with `flutter doctor`.
-2. Fetch dependencies with `flutter pub get`.
-3. Run the app with `flutter run`.
+This project is a starting point for a Flutter application.
 
-## GitHub Notes
+A few resources to get you started if this is your first Flutter project:
 
-This repository is configured with a Flutter-focused `.gitignore` and a CI workflow that runs analysis and tests on push and pull requests.
+- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
+- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

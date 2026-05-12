@@ -17,8 +17,18 @@ class MainShell extends StatefulWidget {
 
 class _MainShellState extends State<MainShell> {
   int _currentIndex = 0;
-  final List<Widget> _pages = const [HomeView(), MarketplaceView(), BookingsView(), ProfileView()];
-  final List<String> _titles = ['Discover', 'Marketplace', 'Bookings', 'Profile'];
+  final List<Widget> _pages = const [
+    HomeView(),
+    MarketplaceView(),
+    BookingsView(),
+    ProfileView(),
+  ];
+  final List<String> _titles = [
+    'Discover',
+    'Marketplace',
+    'Bookings',
+    'Profile',
+  ];
   bool _didInitialLoad = false;
 
   static const int _bookingsTabIndex = 2;
@@ -58,15 +68,40 @@ class _MainShellState extends State<MainShell> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          _titles[_currentIndex],
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+        title: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 220),
+          transitionBuilder: (child, animation) =>
+              FadeTransition(opacity: animation, child: child),
+          child: Text(
+            _titles[_currentIndex],
+            key: ValueKey(_titles[_currentIndex]),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         centerTitle: false,
         elevation: 0,
       ),
-      body: _pages[_currentIndex],
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 260),
+        switchInCurve: Curves.easeOutCubic,
+        switchOutCurve: Curves.easeInCubic,
+        transitionBuilder: (child, animation) {
+          final slide = Tween<Offset>(
+            begin: const Offset(0.02, 0),
+            end: Offset.zero,
+          ).animate(animation);
+
+          return FadeTransition(
+            opacity: animation,
+            child: SlideTransition(position: slide, child: child),
+          );
+        },
+        child: KeyedSubtree(
+          key: ValueKey(_currentIndex),
+          child: _pages[_currentIndex],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
@@ -79,8 +114,14 @@ class _MainShellState extends State<MainShell> {
         elevation: 8,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.storefront), label: 'Market'),
-          BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: 'Bookings'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.storefront),
+            label: 'Market',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_month),
+            label: 'Bookings',
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),

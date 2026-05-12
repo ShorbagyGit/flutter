@@ -9,6 +9,9 @@ class BookingModel {
   final int paymobOrderId;
   final String userId;
   final String stableId;
+  final String stableName;
+  final String horseId;
+  final String horseName;
   final String slotId;
 
   BookingModel({
@@ -22,6 +25,9 @@ class BookingModel {
     required this.paymobOrderId,
     required this.userId,
     required this.stableId,
+    required this.stableName,
+    required this.horseId,
+    required this.horseName,
     required this.slotId,
   });
 
@@ -54,9 +60,25 @@ class BookingModel {
       for (final key in keys) {
         final value = json[key];
         if (value is Map<String, dynamic>) {
-          final nestedId = value['id'] ?? value['userId'] ?? value['stableId'] ?? value['slotId'];
+          final nestedId = value['id'] ?? value['userId'] ?? value['stableId'] ?? value['slotId'] ?? value['horseId'];
           if (nestedId != null && nestedId.toString().trim().isNotEmpty) {
             return nestedId.toString();
+          }
+        }
+        if (value != null && value.toString().trim().isNotEmpty) {
+          return value.toString();
+        }
+      }
+      return '';
+    }
+
+    String readNestedName(List<String> keys) {
+      for (final key in keys) {
+        final value = json[key];
+        if (value is Map<String, dynamic>) {
+          final nestedName = value['name'] ?? value['stableName'] ?? value['horseName'];
+          if (nestedName != null && nestedName.toString().trim().isNotEmpty) {
+            return nestedName.toString();
           }
         }
         if (value != null && value.toString().trim().isNotEmpty) {
@@ -79,6 +101,9 @@ class BookingModel {
           : int.tryParse((json['paymobOrderId'] ?? json['paymob_order_id'] ?? 0).toString()) ?? 0,
       userId: readNestedId(['user', 'userId', 'user_id']),
       stableId: readNestedId(['stable', 'stableId', 'stable_id']),
+      stableName: readNestedName(['stable', 'stableName', 'stable_name']),
+      horseId: readNestedId(['horse', 'horseId', 'horse_id']),
+      horseName: readNestedName(['horse', 'horseName', 'horse_name']),
       slotId: readNestedId(['slot', 'slotId', 'slot_id']),
     );
   }
@@ -94,7 +119,8 @@ class BookingModel {
       'price': price,
       'paymobOrderId': paymobOrderId,
       'user': {'id': userId},
-      'stable': {'id': stableId},
+      'stable': {'id': stableId, 'name': stableName},
+      'horse': {'id': horseId, 'name': horseName},
       'slot': {'id': slotId},
     };
   }

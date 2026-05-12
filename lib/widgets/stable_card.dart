@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/stable.dart';
+import '../services/api_service.dart';
 
 class StableCard extends StatelessWidget {
   final Stable stable;
@@ -32,7 +33,7 @@ class StableCard extends StatelessWidget {
                 fit: StackFit.expand,
                 children: [
                   Image.network(
-                    stable.image,
+                    ApiService.resolveMediaUrl(stable.image),
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) => Container(color: theme.colorScheme.surface),
                   ),

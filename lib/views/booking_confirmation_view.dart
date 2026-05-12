@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/booking_model.dart';
+import '../models/horse_model.dart';
 import '../models/slot_model.dart';
 import '../models/stable.dart';
 import '../utils/app_routes.dart';
@@ -10,11 +11,13 @@ import '../widgets/primary_button.dart';
 class BookingConfirmationArguments {
   final BookingModel booking;
   final Stable stable;
+  final HorseModel? horse;
   final SlotModel slot;
 
   BookingConfirmationArguments({
     required this.booking,
     required this.stable,
+    this.horse,
     required this.slot,
   });
 }
@@ -164,17 +167,37 @@ class BookingConfirmationView extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: _TicketInfoCell(
-                                  icon: Icons.tag_outlined,
-                                  label: 'Slot',
-                                  value: arguments.slot.id,
+                                  icon: Icons.pets_outlined,
+                                  label: 'Horse',
+                                  value: arguments.horse?.name ?? 'Unknown',
                                 ),
                               ),
                               const SizedBox(width: 10),
                               Expanded(
                                 child: _TicketInfoCell(
+                                  icon: Icons.tag_outlined,
+                                  label: 'Slot',
+                                  value: arguments.slot.id,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: _TicketInfoCell(
                                   icon: Icons.person_outline,
                                   label: 'Status',
                                   value: arguments.booking.status,
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: _TicketInfoCell(
+                                  icon: Icons.attach_money,
+                                  label: 'Price',
+                                  value: 'EGP ${arguments.booking.price.toStringAsFixed(0)}',
                                 ),
                               ),
                             ],

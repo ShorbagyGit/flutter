@@ -535,7 +535,7 @@ class _MarketplaceViewState extends State<MarketplaceView> {
                                       shrinkWrap: true,
                                       physics: const NeverScrollableScrollPhysics(),
                                       itemCount: filteredProducts.length,
-                                      separatorBuilder: (_, __) => const SizedBox(height: 14),
+                                      separatorBuilder: (_, _) => const SizedBox(height: 14),
                                       itemBuilder: (context, index) {
                                         return _buildProductCard(filteredProducts[index], index);
                                       },
